@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Email Verified - MenuSnap</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #10B981 0%, #059669 50%, #047857 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 500px;
+            padding: 50px 40px;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2);
+            text-align: center;
+        }
+
+        .success-icon {
+            font-size: 80px;
+            margin-bottom: 20px;
+            animation: bounce 1s ease-out;
+        }
+
+        @keyframes bounce {
+            0%, 20%, 53%, 80%, 100% { transform: translate3d(0,0,0); }
+            40%, 43% { transform: translate3d(0,-20px,0); }
+            70% { transform: translate3d(0,-10px,0); }
+            90% { transform: translate3d(0,-4px,0); }
+        }
+
+        .logo {
+            width: 60px;
+            height: 60px;
+            margin: 0 auto 20px;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            font-size: 2.2rem;
+            font-weight: 700;
+            color: #10B981;
+            margin-bottom: 15px;
+        }
+
+        h2 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        .message {
+            font-size: 1.1rem;
+            color: #666;
+            margin-bottom: 30px;
+            line-height: 1.6;
+        }
+
+        .success-box {
+            background: #ECFDF5;
+            border: 2px solid #10B981;
+            border-radius: 15px;
+            padding: 25px;
+            margin-bottom: 30px;
+        }
+
+        .success-title {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: #047857;
+            margin-bottom: 10px;
+        }
+
+        .success-text {
+            color: #065F46;
+            font-size: 1rem;
+        }
+
+        .action-button {
+            display: inline-block;
+            background: #10B981;
+            color: white;
+            text-decoration: none;
+            padding: 15px 30px;
+            border-radius: 12px;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 20px rgba(16, 185, 129, 0.3);
+            margin: 10px;
+        }
+
+        .action-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 25px rgba(16, 185, 129, 0.4);
+            background: #059669;
+        }
+
+        .secondary-button {
+            display: inline-block;
+            background: transparent;
+            color: #10B981;
+            text-decoration: none;
+            padding: 15px 30px;
+            border: 2px solid #10B981;
+            border-radius: 12px;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            margin: 10px;
+        }
+
+        .secondary-button:hover {
+            background: #10B981;
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        .footer-text {
+            margin-top: 20px;
+            font-size: 0.9rem;
+            color: #9CA3AF;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="success-icon">✅</div>
+        <img src="icon.png" alt="MenuSnap" class="logo">
+        <h1>Email Verified!</h1>
+        <h2>Welcome to MenuSnap</h2>
+        
+        <div class="success-box">
+            <div class="success-title">🎉 Verification Complete</div>
+            <div class="success-text">Your email has been successfully verified. You can now sign in to MenuSnap and start exploring amazing restaurants!</div>
+        </div>
+
+        <p class="message">
+            Ready to discover Tampa's best dishes? Open MenuSnap and sign in with your verified account to start earning XP and building your foodie profile.
+        </p>
+
+        <a href="menusnap://auth/login" class="action-button">
+            📱 Open MenuSnap
+        </a>
+        
+        <a href="#" class="secondary-button" onclick="window.close()">
+            ← Close This Page
+        </a>
+
+        <p class="footer-text">
+            If MenuSnap doesn't open automatically, make sure the app is installed on your device.
+        </p>
+    </div>
+
+    <script>
+        // Try to open the MenuSnap app after 2 seconds
+        setTimeout(() => {
+            console.log('Attempting to open MenuSnap app...');
+            window.location.href = 'menusnap://auth/verified';
+        }, 2000);
+    </script>
+</body>
+</html>

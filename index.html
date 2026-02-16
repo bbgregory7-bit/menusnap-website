@@ -814,15 +814,12 @@
         
         console.log('🌐 Auth params:', { type, hasAccessToken: !!accessToken, hasRefreshToken: !!refreshToken });
         
-        // Show email verification success banner
+        // Redirect to dedicated email verification success page
         if (type === 'signup' || (accessToken && refreshToken && type !== 'recovery')) {
-            console.log('✅ Email verification detected!');
-            const banner = document.getElementById('email-verified-banner');
-            if (banner) {
-                banner.style.display = 'block';
-                // Adjust header position to account for banner
-                document.querySelector('.header').style.marginTop = '60px';
-            }
+            console.log('✅ Email verification detected! Redirecting to success page...');
+            // Redirect to the dedicated email verified page
+            window.location.href = 'email-verified.html';
+            return; // Stop processing the rest of the page
         }
         
         // Continue with password reset detection
