@@ -530,6 +530,12 @@
     </style>
 </head>
 <body>
+    <!-- Email verification success message -->
+    <div id="email-verified-banner" style="display: none; background: #4ade80; color: white; text-align: center; padding: 15px; font-weight: 600; position: fixed; top: 0; width: 100%; z-index: 9999; box-shadow: 0 2px 10px rgba(0,0,0,0.2);">
+        ✅ Email Verified Successfully! You can now return to MenuSnap and sign in.
+        <button onclick="document.getElementById('email-verified-banner').style.display='none'" style="background: none; border: none; color: white; font-size: 18px; float: right; cursor: pointer; margin-top: -2px;">×</button>
+    </div>
+
     <!-- Header -->
     <header class="header">
         <nav class="nav">
@@ -795,15 +801,33 @@
     </footer>
 
     <script>
-        // Check for password reset tokens in URL
+        // Check for email verification and password reset tokens in URL
         console.log('🌐 Website loaded, checking for auth tokens...');
+        
+        // Check for email verification first
+        const urlParams = new URLSearchParams(window.location.search);
+        const hashParams = new URLSearchParams(window.location.hash.substring(1));
+        
+        const type = urlParams.get('type') || hashParams.get('type');
+        const accessToken = urlParams.get('access_token') || hashParams.get('access_token');
+        const refreshToken = urlParams.get('refresh_token') || hashParams.get('refresh_token');
+        
+        console.log('🌐 Auth params:', { type, hasAccessToken: !!accessToken, hasRefreshToken: !!refreshToken });
+        
+        // Show email verification success banner
+        if (type === 'signup' || (accessToken && refreshToken && type !== 'recovery')) {
+            console.log('✅ Email verification detected!');
+            const banner = document.getElementById('email-verified-banner');
+            if (banner) {
+                banner.style.display = 'block';
+                // Adjust header position to account for banner
+                document.querySelector('.header').style.marginTop = '60px';
+            }
+        }
+        
+        // Continue with password reset detection
         console.log('🌐 Full URL:', window.location.href);
         console.log('🌐 Search params:', window.location.search);
-        
-        const urlParams = new URLSearchParams(window.location.search);
-        const accessToken = urlParams.get('access_token');
-        const refreshToken = urlParams.get('refresh_token');
-        const type = urlParams.get('type');
         
         console.log('🌐 Parsed params:', { 
             type, 
