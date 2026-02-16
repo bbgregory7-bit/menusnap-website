@@ -1,0 +1,10 @@
+[build]
+  publish = "."
+
+[form]
+  # Enable form processing
+  
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200

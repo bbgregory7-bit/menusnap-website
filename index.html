@@ -1,0 +1,1036 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MenuSnap - The Future of Food Discovery</title>
+    <meta name="description" content="Discover and share amazing dishes at the best restaurants. Starting in Tampa and expanding nationwide. Level up as a food critic by photographing menu items and building your culinary profile.">
+    <meta name="keywords" content="food, restaurant, photography, critic, menu, dining, nationwide, expansion, community">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://menusnap.com/">
+    <meta property="og:title" content="MenuSnap - The Future of Food Discovery">
+    <meta property="og:description" content="Discover and share amazing dishes at the best restaurants. Starting in Tampa and expanding nationwide. Level up as a food critic by photographing menu items and building your culinary profile.">
+    <meta property="og:image" content="https://menusnap.com/og-image.png">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://menusnap.com/">
+    <meta property="twitter:title" content="MenuSnap - The Future of Food Discovery">
+    <meta property="twitter:description" content="Discover and share amazing dishes at the best restaurants. Starting in Tampa and expanding nationwide. Level up as a food critic by photographing menu items and building your culinary profile.">
+    <meta property="twitter:image" content="https://menusnap.com/og-image.png">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            overflow-x: hidden;
+        }
+
+        /* Header */
+        .header {
+            background: linear-gradient(135deg, #FF6B35 0%, #E74C3C 50%, #8E44AD 100%);
+            color: white;
+            padding: 20px 0;
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            box-shadow: 0 2px 20px rgba(0,0,0,0.1);
+        }
+
+        .nav {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 20px;
+        }
+
+        .logo-nav {
+            display: flex;
+            align-items: center;
+            font-size: 1.5rem;
+            font-weight: 700;
+        }
+
+        .logo-icon {
+            width: 32px;
+            height: 32px;
+            margin-right: 10px;
+            border-radius: 6px;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: opacity 0.3s;
+        }
+
+        .nav-links a:hover {
+            opacity: 0.8;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #FF6B35 0%, #E74C3C 30%, #3498DB 70%, #2ECC71 100%);
+            color: white;
+            padding: 120px 20px 80px;
+            text-align: center;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .hero-content {
+            max-width: 800px;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .hero .tagline {
+            font-size: 1.5rem;
+            margin-bottom: 30px;
+            opacity: 0.95;
+        }
+
+        .hero .description {
+            font-size: 1.2rem;
+            margin-bottom: 40px;
+            opacity: 0.9;
+            line-height: 1.6;
+        }
+
+        .release-date {
+            background: rgba(255, 255, 255, 0.2);
+            padding: 20px 40px;
+            border-radius: 15px;
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 30px;
+            backdrop-filter: blur(10px);
+        }
+
+        .app-store-btn {
+            display: inline-block;
+            background: #000;
+            color: white;
+            text-decoration: none;
+            padding: 15px 30px;
+            border-radius: 12px;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+            margin: 10px;
+        }
+
+        .app-store-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 25px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Main Content Sections */
+        .section {
+            padding: 80px 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section h2 {
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: 50px;
+            color: #FF6B35;
+        }
+
+        /* Features Grid */
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+            margin-bottom: 60px;
+        }
+
+        .feature-card {
+            background: white;
+            padding: 40px;
+            border-radius: 20px;
+            text-align: center;
+            box-shadow: 0 5px 30px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .feature-icon {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            display: block;
+        }
+
+        .feature-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            color: #FF6B35;
+        }
+
+        .feature-card p {
+            color: #666;
+            line-height: 1.6;
+        }
+
+        /* How It Works */
+        .how-it-works {
+            background: #f8f9fa;
+        }
+
+        .steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+        }
+
+        .step {
+            text-align: center;
+        }
+
+        .step-number {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, #3498DB 0%, #2ECC71 100%);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin: 0 auto 20px;
+        }
+
+        .step h3 {
+            margin-bottom: 15px;
+            color: #333;
+        }
+
+        /* Tampa Focus */
+        .tampa-section {
+            background: linear-gradient(135deg, #8E44AD 0%, #3498DB 30%, #2980B9 70%, #2ECC71 100%);
+            color: white;
+            text-align: center;
+            position: relative;
+        }
+
+        .tampa-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.2);
+            pointer-events: none;
+        }
+
+        .tampa-section > * {
+            position: relative;
+            z-index: 1;
+        }
+
+        .tampa-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+            margin-top: 50px;
+        }
+
+        .stat {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 30px;
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        /* Footer */
+        .footer {
+            background: linear-gradient(135deg, #2C3E50 0%, #34495E 50%, #7F8C8D 100%);
+            color: white;
+            padding: 40px 20px;
+            text-align: center;
+        }
+
+        .footer-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .footer-links {
+            margin-bottom: 20px;
+        }
+
+        .footer-links a {
+            color: white;
+            text-decoration: none;
+            margin: 0 15px;
+            opacity: 0.8;
+        }
+
+        .footer-links a:hover {
+            opacity: 1;
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero .tagline {
+                font-size: 1.2rem;
+            }
+
+            .section {
+                padding: 60px 20px;
+            }
+
+            .section h2 {
+                font-size: 2rem;
+            }
+
+            .features-grid {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+
+            .feature-card {
+                padding: 30px 20px;
+            }
+
+            .release-date {
+                padding: 15px 20px;
+                font-size: 1.1rem;
+            }
+        }
+
+        /* Smooth scrolling */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* Section spacing */
+        .section:nth-child(even) {
+            background: #f8f9fa;
+        }
+
+        /* Beta Signup */
+        .beta-signup {
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 40px;
+            margin-top: 50px;
+            text-align: center;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .beta-signup h3 {
+            font-size: 1.8rem;
+            margin-bottom: 15px;
+            color: white;
+        }
+
+        .beta-signup p {
+            font-size: 1.1rem;
+            margin-bottom: 30px;
+            opacity: 0.9;
+        }
+
+        .beta-form {
+            display: flex;
+            gap: 15px;
+            max-width: 400px;
+            margin: 0 auto;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .beta-form input {
+            flex: 1;
+            min-width: 250px;
+            padding: 15px 20px;
+            border: none;
+            border-radius: 10px;
+            font-size: 1rem;
+            background: white;
+            color: #333;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .beta-form input:focus {
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.3);
+        }
+
+        .beta-form button {
+            padding: 15px 25px;
+            background: linear-gradient(135deg, #2ECC71 0%, #27AE60 100%);
+            color: white;
+            border: none;
+            border-radius: 10px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            white-space: nowrap;
+        }
+
+        .beta-form button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+
+        .thank-you-message {
+            background: rgba(46, 204, 113, 0.2);
+            border: 2px solid rgba(46, 204, 113, 0.5);
+            border-radius: 15px;
+            padding: 30px;
+            margin-top: 20px;
+        }
+
+        .thank-you-message h4 {
+            color: #2ECC71;
+            margin-bottom: 10px;
+            font-size: 1.3rem;
+        }
+
+        .thank-you-message p {
+            color: white;
+            margin: 0;
+            opacity: 0.9;
+        }
+
+        @media (max-width: 600px) {
+            .beta-form {
+                flex-direction: column;
+                gap: 15px;
+            }
+            
+            .beta-form input {
+                min-width: 100%;
+            }
+            
+            .beta-signup {
+                padding: 30px 20px;
+            }
+        }
+
+        /* App Screenshots Section */
+        .app-screenshots {
+            background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%);
+        }
+
+        .screenshots-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .screenshot-item {
+            text-align: center;
+            background: white;
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .screenshot-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 50px rgba(0, 0, 0, 0.15);
+        }
+
+        .screenshot-img {
+            width: 100%;
+            max-width: 250px;
+            height: auto;
+            border-radius: 20px;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
+            margin-bottom: 20px;
+            border: 1px solid #e0e0e0;
+        }
+
+        .screenshot-caption h4 {
+            font-size: 1.3rem;
+            color: #FF6B35;
+            margin-bottom: 10px;
+            font-weight: 600;
+        }
+
+        .screenshot-caption p {
+            color: #666;
+            font-size: 1rem;
+            line-height: 1.5;
+            margin: 0;
+        }
+
+        /* Mobile responsive for screenshots */
+        @media (max-width: 768px) {
+            .screenshots-container {
+                grid-template-columns: 1fr;
+                gap: 30px;
+                padding: 0 20px;
+            }
+            
+            .screenshot-item {
+                padding: 25px 20px;
+            }
+            
+            .screenshot-img {
+                max-width: 200px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <nav class="nav">
+            <div class="logo-nav">
+                <img src="icon.png" alt="MenuSnap" class="logo-icon">
+                MenuSnap
+            </div>
+            <ul class="nav-links">
+                <li><a href="#features">Features</a></li>
+                <li><a href="#how-it-works">How It Works</a></li>
+                <li><a href="#tampa">Expansion</a></li>
+                <li><a href="privacy.html">Privacy</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <div style="display: flex; align-items: center; justify-content: center; margin-bottom: 20px;">
+                <img src="icon.png" alt="MenuSnap" style="width: 80px; height: 80px; border-radius: 16px; margin-right: 20px; box-shadow: 0 4px 20px rgba(0,0,0,0.3);">
+                <h1 style="margin: 0;">MenuSnap</h1>
+            </div>
+            <div class="tagline">The Future of Food Discovery Starts Here</div>
+            <div class="description">
+                Discover and document amazing dishes at the best restaurants. Starting in Tampa and expanding nationwide, MenuSnap is building the ultimate community-driven food discovery platform. Become your own food critic by photographing menu items, earning XP, and building your culinary profile.
+            </div>
+            
+            <div class="release-date">
+                📱 Download Now!
+            </div>
+            
+            <!-- App Store buttons -->
+            <a href="https://apps.apple.com/us/app/menusnap/id6753966673" class="app-store-btn" id="app-store-link">
+                📱 Download on the App Store
+            </a>
+            
+            <!-- Hidden form for Netlify Forms -->
+            <form name="beta-signup" netlify style="display: none;">
+                <input type="email" name="email" />
+                <input type="text" name="timestamp" />
+                <input type="text" name="page" />
+            </form>
+            <div style="margin-top: 20px; opacity: 0.8;">
+                <small>Available for iPhone - Download Now!</small>
+            </div>
+
+            <!-- Beta Tester Signup -->
+            <div class="beta-signup" id="beta-signup">
+                <div style="display: flex; align-items: center; justify-content: center; margin-bottom: 15px;">
+                    <img src="icon.png" alt="MenuSnap" style="width: 40px; height: 40px; border-radius: 8px; margin-right: 15px;">
+                    <h3 style="margin: 0;">🧪 Become a Beta Tester</h3>
+                </div>
+                <p>Get early access and help us perfect MenuSnap before launch!</p>
+                <form id="beta-form" class="beta-form" name="beta-signup" netlify>
+                    <input type="email" id="email" name="email" placeholder="Enter your email address" required>
+                    <input type="hidden" name="form-name" value="beta-signup">
+                    <button type="submit">Join Beta Test</button>
+                </form>
+                <div id="thank-you-message" class="thank-you-message" style="display: none;">
+                    <h4>🎉 Thank you!</h4>
+                    <p>We've received your email and will contact you about beta testing soon!</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="features" class="section">
+        <h2>Building the Future of Food Discovery</h2>
+        <div class="features-grid">
+            <div class="feature-card">
+                <span class="feature-icon">📸</span>
+                <h3>Photo Documentation</h3>
+                <p>Capture and catalog dishes at Tampa restaurants. Build a visual diary of your culinary adventures with high-quality photo uploads.</p>
+            </div>
+            
+            <div class="feature-card">
+                <span class="feature-icon">🎮</span>
+                <h3>Gamified Experience</h3>
+                <p>Earn XP, level up, and unlock achievements as you develop your palate. Get bonus points for trying new cuisines and exploring different neighborhoods like a professional critic.</p>
+            </div>
+            
+            <div class="feature-card">
+                <span class="feature-icon">🏆</span>
+                <h3>Streaks & Challenges</h3>
+                <p>Maintain daily photo streaks and complete weekly challenges. The more you explore, the higher you climb the leaderboards.</p>
+            </div>
+            
+            <div class="feature-card">
+                <span class="feature-icon">🗺️</span>
+                <h3>Local Discovery</h3>
+                <p>Find hidden gems and popular spots starting in Tampa, with expansion to new cities coming soon. Discover restaurants by cuisine, neighborhood, or trending dishes.</p>
+            </div>
+            
+            <div class="feature-card">
+                <span class="feature-icon">👥</span>
+                <h3>Growing Community</h3>
+                <p>Connect with fellow food critics and enthusiasts starting in Tampa and expanding nationwide. Share recommendations and see what dishes are trending in your area as we grow city by city.</p>
+            </div>
+            
+            <div class="feature-card">
+                <span class="feature-icon">📊</span>
+                <h3>Personal Stats</h3>
+                <p>Track your dining habits, favorite cuisines, and restaurant visits. See your foodie journey unfold with detailed analytics.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- App Screenshots Section -->
+    <section class="section app-screenshots">
+        <h2>See MenuSnap in Action</h2>
+        <p style="text-align: center; font-size: 1.2rem; color: #666; margin-bottom: 50px;">
+            Get a preview of the MenuSnap experience with these screenshots from the app
+        </p>
+        <div class="screenshots-container">
+            <div class="screenshot-item">
+                <img src="screenshot1.png" alt="MenuSnap Home Screen - Featured Dishes" class="screenshot-img">
+                <div class="screenshot-caption">
+                    <h4>Discover Featured Dishes</h4>
+                    <p>Browse 500+ photographed dishes from Tampa's most popular restaurants</p>
+                </div>
+            </div>
+            <div class="screenshot-item">
+                <img src="screenshot2.png" alt="MenuSnap XP System - Gamification" class="screenshot-img">
+                <div class="screenshot-caption">
+                    <h4>Level Up Your Food Journey</h4>
+                    <p>Earn XP and unlock achievements as you explore Tampa's dining scene</p>
+                </div>
+            </div>
+            <div class="screenshot-item">
+                <img src="screenshot3.png" alt="MenuSnap Restaurant Directory" class="screenshot-img">
+                <div class="screenshot-caption">
+                    <h4>Explore Local Restaurants</h4>
+                    <p>Discover Tampa's dining scene with detailed photos and reviews</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works Section -->
+    <section id="how-it-works" class="section how-it-works">
+        <h2>How MenuSnap Works</h2>
+        <div class="steps">
+            <div class="step">
+                <div class="step-number">1</div>
+                <h3>Visit a Restaurant</h3>
+                <p>Check in at restaurants starting with our Tampa launch market, with new cities being added regularly as we expand nationwide.</p>
+            </div>
+            
+            <div class="step">
+                <div class="step-number">2</div>
+                <h3>Photograph Your Dish</h3>
+                <p>Take a photo of your menu item and upload it to the app. Each photo earns you XP and helps other foodies discover great dishes.</p>
+            </div>
+            
+            <div class="step">
+                <div class="step-number">3</div>
+                <h3>Earn Points & Level Up</h3>
+                <p>Gain XP for each photo, with bonus points for trying new cuisines, visiting new restaurants, and maintaining streaks.</p>
+            </div>
+            
+            <div class="step">
+                <div class="step-number">4</div>
+                <h3>Build Your Profile</h3>
+                <p>Watch your critic profile grow as you explore dining scenes across cities. Unlock achievements and climb leaderboards as MenuSnap expands to new markets.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Launch Market Section -->
+    <section id="tampa" class="section tampa-section">
+        <h2>Starting in Tampa, Growing Everywhere</h2>
+        <p style="font-size: 1.2rem; margin-bottom: 30px; opacity: 0.9;">
+            MenuSnap begins its journey in Tampa's vibrant restaurant scene. From downtown hotspots to hidden neighborhood gems, we're building the foundation for nationwide expansion. Tampa food enthusiasts get first access to this revolutionary food discovery platform.
+        </p>
+        
+        <div class="tampa-stats">
+            <div class="stat">
+                <span class="stat-number">40+</span>
+                <span>Featured Restaurants</span>
+            </div>
+            <div class="stat">
+                <span class="stat-number">15+</span>
+                <span>Cuisine Types</span>
+            </div>
+            <div class="stat">
+                <span class="stat-number">∞</span>
+                <span>Dishes to Discover</span>
+            </div>
+        </div>
+        
+        <div style="margin-top: 50px;">
+            <h3 style="margin-bottom: 20px; color: white;">Launch Market Coverage</h3>
+            <p style="opacity: 0.9; color: white;">Downtown Tampa • Westshore • Hyde Park • Seminole Heights • Ybor City • South Tampa</p>
+            <p style="margin-top: 20px; opacity: 0.8; font-style: italic; color: white;">Coming Soon: Orlando • Miami • Jacksonville • And More Cities Nationwide!</p>
+        </div>
+    </section>
+
+    <!-- Expansion Roadmap -->
+    <section class="section" style="background: #f8f9fa;">
+        <h2>Our Expansion Vision</h2>
+        <div style="max-width: 800px; margin: 0 auto; text-align: center;">
+            <p style="font-size: 1.2rem; margin-bottom: 40px; color: #666;">
+                MenuSnap is designed to scale nationwide, connecting food communities across America. We're starting strong in Tampa to perfect our platform before rapid expansion.
+            </p>
+            
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 30px; margin-top: 40px;">
+                <div style="background: white; padding: 30px; border-radius: 15px; box-shadow: 0 3px 15px rgba(0,0,0,0.1);">
+                    <div style="font-size: 2rem; margin-bottom: 15px;">🚀</div>
+                    <h3 style="color: #FF6B35; margin-bottom: 10px;">Phase 1</h3>
+                    <p style="color: #666; margin: 0;">Tampa Launch Market<br><small style="opacity: 0.7;">Now Live!</small></p>
+                </div>
+                
+                <div style="background: white; padding: 30px; border-radius: 15px; box-shadow: 0 3px 15px rgba(0,0,0,0.1);">
+                    <div style="font-size: 2rem; margin-bottom: 15px;">🌴</div>
+                    <h3 style="color: #3498DB; margin-bottom: 10px;">Phase 2</h3>
+                    <p style="color: #666; margin: 0;">Florida Expansion<br><small style="opacity: 0.7;">Orlando, Miami, Jacksonville</small></p>
+                </div>
+                
+                <div style="background: white; padding: 30px; border-radius: 15px; box-shadow: 0 3px 15px rgba(0,0,0,0.1);">
+                    <div style="font-size: 2rem; margin-bottom: 15px;">🇺🇸</div>
+                    <h3 style="color: #2ECC71; margin-bottom: 10px;">Phase 3</h3>
+                    <p style="color: #666; margin: 0;">Nationwide Growth<br><small style="opacity: 0.7;">Major markets across America</small></p>
+                </div>
+            </div>
+            
+            <div style="margin-top: 50px; padding: 30px; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); border-radius: 20px; color: white;">
+                <h3 style="margin-bottom: 15px; color: white;">Be Part of Our Growth Story</h3>
+                <p style="margin: 0; opacity: 0.9;">Early users in Tampa help shape MenuSnap's future. Your feedback and engagement drive our expansion to new cities nationwide.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pre-Launch CTA -->
+    <section class="section" style="text-align: center; background: linear-gradient(135deg, #E74C3C 0%, #FF6B35 30%, #F39C12 70%, #E67E22 100%); color: white;">
+        <h2 style="color: white;">Join the Food Discovery Revolution</h2>
+        <p style="font-size: 1.2rem; margin-bottom: 30px; opacity: 0.9;">
+            MenuSnap is now live in Tampa, with rapid expansion planned nationwide. Join the next generation of food discovery!
+        </p>
+        <div class="release-date" style="display: inline-block;">
+            📱 Available Now!
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div style="display: flex; align-items: center; justify-content: center; margin-bottom: 20px;">
+                <img src="icon.png" alt="MenuSnap" style="width: 32px; height: 32px; border-radius: 6px; margin-right: 10px; opacity: 0.8;">
+                <span style="font-size: 1.2rem; font-weight: 600;">MenuSnap</span>
+            </div>
+            <div class="footer-links">
+                <a href="privacy.html">Privacy Policy</a>
+                <a href="mailto:hello@menusnap.com">Contact</a>
+                <a href="#features">Features</a>
+            </div>
+            <p>&copy; 2025 MenuSnap. Made with ❤️ for food critics and enthusiasts everywhere.</p>
+            <p style="margin-top: 10px; opacity: 0.7;">
+                MenuSnap is an independent app launching in Tampa and expanding nationwide.
+            </p>
+        </div>
+    </footer>
+
+    <script>
+        // Check for password reset tokens in URL
+        console.log('🌐 Website loaded, checking for auth tokens...');
+        console.log('🌐 Full URL:', window.location.href);
+        console.log('🌐 Search params:', window.location.search);
+        
+        const urlParams = new URLSearchParams(window.location.search);
+        const accessToken = urlParams.get('access_token');
+        const refreshToken = urlParams.get('refresh_token');
+        const type = urlParams.get('type');
+        
+        console.log('🌐 Parsed params:', { 
+            type, 
+            hasAccessToken: !!accessToken, 
+            hasRefreshToken: !!refreshToken,
+            accessTokenLength: accessToken ? accessToken.length : 0
+        });
+        
+        // Also check for hash-based parameters (sometimes Supabase uses hash instead of query)
+        const hashParams = new URLSearchParams(window.location.hash.substring(1));
+        const hashAccessToken = hashParams.get('access_token');
+        const hashRefreshToken = hashParams.get('refresh_token');
+        const hashType = hashParams.get('type');
+        
+        // Check for error parameters
+        const error = urlParams.get('error') || hashParams.get('error');
+        const errorCode = urlParams.get('error_code') || hashParams.get('error_code');
+        const errorDescription = urlParams.get('error_description') || hashParams.get('error_description');
+        
+        console.log('🌐 Hash params:', { 
+            hashType, 
+            hasHashAccessToken: !!hashAccessToken, 
+            hasHashRefreshToken: !!hashRefreshToken 
+        });
+        
+        console.log('🌐 Error params:', { error, errorCode, errorDescription });
+        
+        // Use hash params if query params are empty
+        const finalAccessToken = accessToken || hashAccessToken;
+        const finalRefreshToken = refreshToken || hashRefreshToken;
+        const finalType = type || hashType;
+        
+        console.log('🌐 Final params:', { 
+            finalType, 
+            hasFinalAccessToken: !!finalAccessToken, 
+            hasFinalRefreshToken: !!finalRefreshToken 
+        });
+        
+        // Handle error cases (expired/invalid links)
+        if (error) {
+            console.log('❌ Auth error detected:', { error, errorCode, errorDescription });
+            
+            let errorMessage = 'There was an issue with your link.';
+            let actionMessage = 'Please try requesting a new password reset from the MenuSnap app.';
+            
+            if (errorCode === 'otp_expired') {
+                errorMessage = 'Your password reset link has expired.';
+                actionMessage = 'Please request a new password reset from the MenuSnap app.';
+            } else if (error === 'access_denied') {
+                errorMessage = 'The link is invalid or has been used already.';
+                actionMessage = 'Please request a new password reset from the MenuSnap app.';
+            }
+            
+            // Show error page
+            document.body.innerHTML = `
+                <div style="display: flex; align-items: center; justify-content: center; min-height: 100vh; background: linear-gradient(135deg, #FF6B35 0%, #E74C3C 50%, #8E44AD 100%); padding: 20px;">
+                    <div style="max-width: 500px; padding: 40px; background: white; border-radius: 20px; box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2); text-align: center;">
+                        <img src="icon.png" alt="MenuSnap" style="width: 80px; height: 80px; margin: 0 auto 20px; border-radius: 16px;">
+                        <h1 style="color: #FF6B35; margin-bottom: 20px;">MenuSnap</h1>
+                        <div style="background: #fee; border: 1px solid #fcc; color: #c33; padding: 15px; border-radius: 8px; margin: 20px 0;">
+                            <p style="margin: 0; font-weight: 600;">❌ ${errorMessage}</p>
+                        </div>
+                        <p style="color: #666; margin-bottom: 30px;">${actionMessage}</p>
+                        <a href="menusnap://auth/forgot" style="display: inline-block; background: #FF6B35; color: white; text-decoration: none; padding: 15px 30px; border-radius: 12px; font-weight: 600; margin: 5px;">Open MenuSnap</a>
+                        <div style="margin-top: 20px; font-size: 0.8rem; color: #999;">
+                            Error: ${errorCode || error}
+                        </div>
+                    </div>
+                </div>
+            `;
+            return; // Stop processing
+        }
+        
+        // If this is a password reset link, handle it
+        if (finalType === 'recovery' && finalAccessToken && finalRefreshToken) {
+            console.log('✅ Password reset detected!');
+            
+            // Use the final tokens we found (either from query or hash)
+            const resetParams = new URLSearchParams();
+            resetParams.set('access_token', finalAccessToken);
+            resetParams.set('refresh_token', finalRefreshToken);
+            resetParams.set('type', finalType);
+            
+            // Create the deep link with the validated parameters
+            const deepLink = `menusnap://auth/reset?${resetParams.toString()}`;
+            console.log('🔗 Deep link created:', deepLink);
+            
+            // Also try alternative deep link formats for better compatibility
+            const alternativeLinks = [
+                `menusnap://auth/reset?${resetParams.toString()}`,
+                `exp://192.168.1.103:8082/--/auth/reset?${resetParams.toString()}`, // Expo dev
+                `com.menusnap://auth/reset?${resetParams.toString()}` // Alternative scheme
+            ];
+            
+            console.log('🔗 Alternative links:', alternativeLinks);
+            
+            // Show a simple message and redirect
+            document.body.innerHTML = `
+                <div style="display: flex; align-items: center; justify-content: center; min-height: 100vh; background: linear-gradient(135deg, #FF6B35 0%, #E74C3C 50%, #8E44AD 100%); padding: 20px;">
+                    <div style="max-width: 500px; padding: 40px; background: white; border-radius: 20px; box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2); text-align: center;">
+                        <img src="icon.png" alt="MenuSnap" style="width: 80px; height: 80px; margin: 0 auto 20px; border-radius: 16px;">
+                        <h1 style="color: #FF6B35; margin-bottom: 20px;">MenuSnap Password Reset</h1>
+                        <p style="color: #666; margin-bottom: 30px;">Opening MenuSnap to reset your password...</p>
+                        <a href="${deepLink}" id="open-app-btn" style="display: inline-block; background: #FF6B35; color: white; text-decoration: none; padding: 15px 30px; border-radius: 12px; font-weight: 600; margin: 5px;">Open MenuSnap</a>
+                        <a href="${alternativeLinks[1]}" id="open-expo-btn" style="display: inline-block; background: #666; color: white; text-decoration: none; padding: 10px 20px; border-radius: 8px; font-size: 0.9rem; margin: 5px;">Open Expo Dev</a>
+                        <p style="margin-top: 20px; font-size: 0.9rem; color: #666;">Try the main button first. If MenuSnap doesn't open, try the "Expo Dev" button for development builds.</p>
+                        <div style="margin-top: 20px; font-size: 0.8rem; color: #999; font-family: monospace;">
+                            Debug: type=${finalType}, hasTokens=${!!(finalAccessToken && finalRefreshToken)}
+                        </div>
+                    </div>
+                </div>
+            `;
+            
+            // Add click handler for the button
+            document.getElementById('open-app-btn').addEventListener('click', function(e) {
+                console.log('Button clicked, opening:', deepLink);
+                window.location.href = deepLink;
+            });
+            
+            // Try to open the app immediately
+            setTimeout(() => {
+                console.log('Auto-opening app with:', deepLink);
+                window.location.href = deepLink;
+            }, 2000);
+            
+            return; // Don't load the rest of the page
+        }
+        
+        // Check if this might be an email verification instead
+        if (finalType === 'signup' || (finalAccessToken && finalRefreshToken && finalType !== 'recovery')) {
+            console.log('📧 Email verification detected, redirecting...');
+            
+            const verifyParams = new URLSearchParams();
+            if (finalAccessToken) verifyParams.set('access_token', finalAccessToken);
+            if (finalRefreshToken) verifyParams.set('refresh_token', finalRefreshToken);
+            if (finalType) verifyParams.set('type', finalType);
+            
+            const deepLink = `menusnap://auth/verify?${verifyParams.toString()}`;
+            console.log('🔗 Verification deep link:', deepLink);
+            
+            setTimeout(() => {
+                window.location.href = deepLink;
+            }, 1000);
+            
+            return;
+        }
+        
+        // If we get here and have no auth tokens, show normal website
+        console.log('🌐 No auth tokens found, showing normal website');
+
+        // When the app is live in App Store, update this with the actual App Store URL
+        const APP_STORE_URL = 'https://apps.apple.com/us/app/menusnap/id6753966673';
+        
+        // Check if app is available (you can update this manually when live)
+        const isAppLive = true; // Set to true when app is live
+        
+        if (isAppLive) {
+            const appStoreLink = document.getElementById('app-store-link');
+            appStoreLink.href = APP_STORE_URL;
+            appStoreLink.style.opacity = '1';
+            appStoreLink.style.cursor = 'pointer';
+            
+            // Update all launch date references
+            const releaseDates = document.querySelectorAll('.release-date');
+            releaseDates.forEach(date => {
+                date.innerHTML = '📱 Available Now!';
+            });
+        }
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Optional: Auto-redirect mobile users to App Store when live
+        function detectMobile() {
+            return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+        }
+        
+        // Uncomment when app is live and you want auto-redirect
+        // if (isAppLive && detectMobile()) {
+        //     setTimeout(() => {
+        //         window.location.href = APP_STORE_URL;
+        //     }, 5000); // 5 second delay to show the page first
+        // }
+
+        // Beta tester form submission
+        document.getElementById('beta-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const email = document.getElementById('email').value;
+            const form = document.getElementById('beta-form');
+            const thankYouMessage = document.getElementById('thank-you-message');
+            
+            // Send email to Netlify Forms
+            fetch('/', {
+                method: 'POST',
+                headers: { "Content-Type": "application/x-www-form-urlencoded" },
+                body: new URLSearchParams({
+                    'form-name': 'beta-signup',
+                    'email': email,
+                    'timestamp': new Date().toISOString(),
+                    'page': 'MenuSnap Beta Signup'
+                }).toString()
+            })
+            .then(() => {
+                // Show thank you message
+                form.style.display = 'none';
+                thankYouMessage.style.display = 'block';
+                
+                // Log to console for debugging
+                console.log('Beta signup submitted:', email);
+            })
+            .catch((error) => {
+                console.error('Error:', error);
+                alert('There was an error submitting your email. Please try again.');
+            });
+        });
+    </script>
+</body>
+</html>
